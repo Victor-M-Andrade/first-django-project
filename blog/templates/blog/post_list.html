@@ -11,16 +11,12 @@
         <h1><a href="/">Blog Victor Andrade</a></h1>
     </div>
 
-    <div>
-        <p>publicado: 21/12/2022, 11:13</p>
-        <h2><a href="">Meu primeiro post</a></h2>
-        <p>BlaBlaBlaBlaBlaBlaBlaBla</p>
-    </div>
-
-    <div>
-        <p>publicado: 21/12/2022, 11:13</p>
-        <h2><a href="">Meu segundo post</a></h2>
-        <p>BlaBlaBlaBlaBlaBlaBlaBla</p>
-    </div>
+    {% for post in posts %}
+        <div>
+            <p>publicado: {{post.published_date}}</p>
+            <h2><a href="">{{post.title}}</a></h2>
+            <p>{{post.text|linebreaksbr}}</p>
+        </div>
+    {% endfor %}
 </body>
 </html>
