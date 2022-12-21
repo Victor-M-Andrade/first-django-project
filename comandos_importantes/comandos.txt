@@ -1,0 +1,114 @@
+Link: https://tutorial.djangogirls.org/pt/
+
+
+Criar ambiente virtual:
+python -m venv nomeDaPasta
+
+
+Ativar ambiente virtual (todo os comando devem ser feitos dentro dele):
+via cmd: myvenv\Scripts\activate
+via vs code: . myvenv\Scripts\activate.ps1
+
+
+Caso de erro abra o PowerShell como adm e rode:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+
+
+
+Atualizar pip:
+python -m pip install --upgrade pip
+
+
+Crie um arquivo requirements.txt na raiz e coloque tudo o que precisa instalar dentro dele
+
+requiriments.txt
+Django~=3.2.10
+
+
+Para instalar os arquivos dentro de requirements.tx:
+pip install -r requirements.txt
+ou
+python -m pip install -r requirements.txt
+
+
+
+O Django necessita de uma estrutura pre pronta, para gerar faça isso:
+django-admin.exe startproject nomeDoProjeto .
+
+django-admin é um script que criará os diretórios e arquivos para você. Agora, você deve ter uma estrutura de diretório parecida com isso:
+
+djangogirls
+├───manage.py
+├───mysite
+│        settings.py
+│        urls.py
+│        wsgi.py
+│        __init__.py
+└───requirements.txt
+
+
+siga essas configurações: https://tutorial.djangogirls.org/pt/django_start_project/
+
+
+Para criar o banco de dados (precisa estar no mesmo diretorio do arquivo manage.py):
+python manage.py migrate
+
+
+
+Iniciar o servidor:
+python manage.py runserver
+ou
+python manage.py runserver 0:8000
+
+
+
+Vá ao browser e digite: http://127.0.0.1:8000/
+
+
+para parar o servidor digite Ctrl+C
+
+
+
+Esse exemplo criaremos um blog com postagens
+Usaremos o modelo de POO (Programação Orientada a Objeto)
+Para isso vamos precisar de um metodo de postar com alguns atributos
+
+Post
+--------
+title
+text
+author
+created_date
+published_date
+
+
+Para manter tudo organizado, vamos criar uma aplicação dentro do nosso projeto
+python manage.py startapp nomeAplicacao
+
+
+crie os modelos dentro de models.py
+
+
+
+criando tabelas para os nossos modelos no banco de dados
+o Django precisa entender que fizemos algumas modificações nos modelos, entao rode:
+python manage.py makemigrations nomeAplicacao
+
+se a resposta for OK, o modelo de migração ja esta feito,
+para aplicá-lo, rode:
+python manage.py migrate nomeAplicacao
+
+
+Se a resposta for OK esta criado no banco de dados
+
+
+
+Para adcionar um usuario admin voce precisa abrir o arquivo admin.py e importar o modelo que vc fez, olhe no tutorial
+
+
+rode o servidor novamente(python manage.py runserver)
+
+Para adcionar um novo usuario admin voce precisa rodar mais uma instancia do ambiente virtual e colocar:
+python manage.py createsuperuser e colocar as informações necessarias
+
+Existem servidores de python na web, vou utilizar o PythonAnywhere
